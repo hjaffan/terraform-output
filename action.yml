@@ -1,0 +1,19 @@
+# action.yml
+name: 'Terraform Output'
+description: 'Get a state Output By Name'
+inputs:
+  tf-api-token:
+    description: 'Auth Token For Terraform'
+    required: true
+  tf-workspace:
+    description: 'Terraform Workspace'
+    required: true
+  tf-org:
+    description: 'Terraform Org'
+    required: true
+  output-variable:  # id of input
+    description: 'Variable to Output'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
