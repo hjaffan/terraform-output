@@ -15,7 +15,7 @@ inputs:
     description: 'Variable to Output'
     required: true
 outputs:
-  output-variable-output:
+  terraform_variable:
     description: 'The output variable to be used'
 runs:
   using: 'docker'

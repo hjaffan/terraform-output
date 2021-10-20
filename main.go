@@ -75,7 +75,7 @@ func main()  {
 
 			rawValue := output.Value
 			value := fmt.Sprintf("%s", rawValue)
-			fmt.Printf("::set-output name=output-variable-output::%s", value)
+			fmt.Printf("::set-output name=terraform_variable::%s", value)
 		}
 	}
 
