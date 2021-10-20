@@ -14,6 +14,9 @@ inputs:
   output-variable:  # id of input
     description: 'Variable to Output'
     required: true
+outputs:
+  output-variable-output:
+    description: 'The output variable to be used'
 runs:
   using: 'docker'
   image: 'Dockerfile'

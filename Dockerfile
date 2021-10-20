@@ -9,7 +9,7 @@ FROM golang:1.16 AS builder
 RUN apt-get update && apt-get -y install upx
 
 # Turn on Go modules support and disable CGO
-ENV GO111MODULE=on CGO_ENABLED=0
+ENV GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCh=amd64
 
 # Copy all the files from the host into the container
 WORKDIR /src
@@ -17,7 +17,7 @@ COPY . .
 
 # Compile the action - the added flags instruct Go to produce a
 # standalone binary
-RUN go build -a -trimpath -ldflags "-s -w -extldflags '-static'" -installsuffix cgo -tags netgo -o /bin/action .
+RUN GOOS=linux GOARCh=amd64 go build -a -trimpath -ldflags "-s -w -extldflags '-static'" -installsuffix cgo -tags netgo -o /bin/action .
 
 # Strip any symbols - this is not a library
 RUN strip /bin/action

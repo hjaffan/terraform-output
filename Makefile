@@ -1,3 +1,3 @@
 build:
-	docker build -t hjaffan/terraform-output .
+	docker build --platform linux/amd64 -t hjaffan/terraform-output .
 	docker push hjaffan/terraform-output

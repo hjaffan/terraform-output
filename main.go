@@ -75,7 +75,7 @@ func main()  {
 
 			rawValue := output.Value
 			value := fmt.Sprintf("%s", rawValue)
-			fmt.Printf("::set-env name=DOCKER_TOKEN::%s", value)
+			fmt.Printf("::set-output name=output-variable-output::%s", value)
 		}
 	}
 
