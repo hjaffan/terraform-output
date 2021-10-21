@@ -58,23 +58,29 @@ func main()  {
 		log.Print("Got an error at workspace ID")
 		log.Fatal(err)
 	}
+	log.Printf("Got Workspace ID: %s", workspace)
 
 	stateVersion, err := client.StateVersions.Current(ctx, workspace.ID)
 	if err != nil {
 		log.Print("Got an error at state version ID")
 		log.Fatal(err)
 	}
+	log.Printf("Got stateVersion: %s", stateVersion)
+
 	stateOutputs, err := client.StateVersions.Outputs(ctx, stateVersion.ID, tfe.StateVersionOutputsListOptions{ListOptions: options})
 	if err != nil {
 		log.Print("Got an error at state version outputs")
 		log.Fatal(err)
 	}
 
+	log.Printf("Got stateOutputs: %s", stateOutputs)
+
 	for _, output := range stateOutputs {
 		if output.Name == variableName {
 
 			rawValue := output.Value
 			value := fmt.Sprintf("%s", rawValue)
+			log.Print("Got value")
 			fmt.Printf("::set-output name=terraform_variable::%s", value)
 		}
 	}
